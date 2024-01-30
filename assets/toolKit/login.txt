@@ -1,0 +1,46 @@
+
+            Future<bool> checkUserStatus() async
+            {
+              User? user = FirebaseAuth.instance.currentUser;
+
+              if (user != null) {
+                ///User is signed in, check if user data exists in FireStore
+                DocumentSnapshot<Map<String, dynamic>> snapshot =
+                await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+
+                return snapshot.exists;
+              } else {
+                ///User is not signed in
+                return false;
+              }
+            }
+
+
+
+          ///FutureBuilder for checking user status
+          FutureBuilder(
+            future: checkUserStatus(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                ///Check if the user is signed up
+                if (snapshot.data == true) {
+                  ///Redirect to landing page after a delay
+                  Future.delayed(const Duration(seconds: 10), () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MainPageWidget()),
+                    );
+                  });
+                } else {
+                  ///Redirect to sign-up page after a delay
+                  Future.delayed(const Duration(seconds: 10), () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const SignInWidget()),
+                    );
+                  });
+                }
+              }
+              return Container(); ///Return an empty container while waiting
+            },
+          ),

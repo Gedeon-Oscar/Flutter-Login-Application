@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "375461501131",
+    "project_id": "locallancers-app",
+    "storage_bucket": "locallancers-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375461501131:android:bca449cf453186f1bfa34e",
+        "android_client_info": {
+          "package_name": "oscar.locallancers"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQdOvPb_NZBJ_DrLHcYu3lWQZpaHmRPh4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
